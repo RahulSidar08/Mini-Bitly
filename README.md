@@ -74,5 +74,3 @@ npm run dev
 Bitly
 
 TinyURL
-
-Dacoid Micro-SaaS Assignment
