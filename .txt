@@ -1,0 +1,23 @@
+link-analytics-backend/
+│
+├── controllers/
+│   ├── authController.js
+│   ├── urlController.js
+│   └── analyticsController.js
+│
+├── models/
+│   ├── User.js
+│   ├── Url.js
+│   └── ClickLog.js
+│
+├── routes/
+│   ├── authRoutes.js
+│   ├── urlRoutes.js
+│   └── analyticsRoutes.js
+│
+├── middleware/
+│   └── auth.js
+│
+├── .env
+├── server.js
+└── config.js
