@@ -7,6 +7,7 @@ import {ShortenUrl} from "./components/ShortenUrl";
 import {Dashboard} from "./components/DAshboard/DashBoard";
 import { PageNotFound } from "./components/PageNotFound";
 import HomePage from "./components/HomePage";
+import ProtectedRoute from "./components/ProtectedRoute";
 const appRouter = createBrowserRouter([
   {
     path: "/",
@@ -36,7 +37,9 @@ const appRouter = createBrowserRouter([
     path: "/shortUrl",
     element: (
       <div>
+        <ProtectedRoute>
         <ShortenUrl/>
+        </ProtectedRoute>
       </div>
     ),
   },
@@ -44,7 +47,9 @@ const appRouter = createBrowserRouter([
     path: "/dashboard",
     element: (
       <div>
+        <ProtectedRoute>
         <Dashboard/>
+        </ProtectedRoute>
       </div>
     ),
   },

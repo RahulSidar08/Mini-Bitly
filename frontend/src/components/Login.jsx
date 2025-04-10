@@ -3,6 +3,8 @@ import { useNavigate, NavLink } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "../redux/authSlice";
 const Login = () => {
   const {
     register,
@@ -10,6 +12,9 @@ const Login = () => {
     watch,
     formState: { errors },
   } = useForm();
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const user = useSelector((state) => state.Auth.user);
   const onSubmit = async (data) => {
     try {
       let userData = {
@@ -27,7 +32,13 @@ const Login = () => {
         }
       );
       if (res.data.success) {
+        console.log(res.data.user)
+        dispatch(setUser(res.data.user));
         toast.success(res.data.message);
+        localStorage.setItem("user",res.data.user.email)
+        setTimeout(() => {
+          navigate("/")
+        }, 2000);
       }
     } catch (error) {
       console.log(error);
