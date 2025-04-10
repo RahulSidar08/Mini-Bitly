@@ -15,9 +15,9 @@ export const shortenUrl = async (req, res) => {
 
     // Generate or set the short code
     const shortCode =
-      customAlias && customAlias.trim() !== "" ? customAlias.trim() : nanoid(6); // Generates a 6-character code
+      customAlias && customAlias.trim() !== "" ? customAlias.trim() : nanoid(6); 
 
-    // Check if the alias/shortCode already exists
+
     const existingUrl = await Url.findOne({ shortCode });
     if (existingUrl) {
       return res
@@ -39,9 +39,6 @@ export const shortenUrl = async (req, res) => {
     // Send back the generated short URL
     res.status(201).json({
       message: "Short URL created successfully",
-      shortUrl: `${
-        process.env.BASE_URL || "https://yourdomain.com"
-      }/${shortCode}`,
       longUrl,
     });
   } catch (error) {
@@ -82,7 +79,6 @@ export const urlDetails = async (req, res) => {
         .json({ success: false, message: "Missing short code" });
 
     const link = await Url.findOne({ shortCode });
-    // console.log("DB link result:", link); // 🔍 LOG THIS
 
     if (!link || !link.longUrl) {
       return res
@@ -115,8 +111,7 @@ export const urlDetails = async (req, res) => {
       location: { country: geo.country_name, city: geo.city },
     });
 
-    return res.redirect(link.longUrl); // 👈 redirect here
-  } catch (error) {
+    return res.redirect(link.longUrl); 
     console.log("Error in urlDetails:", error);
     res.status(500).json({ success: false, message: "Internal server error" });
   }
@@ -133,7 +128,6 @@ export const getSingleUrlDetail = async (req, res) => {
         .json({ success: false, message: "Missing short code" });
 
     const link = await Click.findOne({ shortCode });
-    // console.log("DB link result:", link); // 🔍 LOG THIS
 
     if (!link) {
       return res
