@@ -44,7 +44,7 @@ git clone https://github.com/RahulSidar08/Mini-Bitly.git
 ## Backend Setup
 
 ```bash
-cd server
+cd backend
 npm install
 npm run start
 
@@ -52,7 +52,7 @@ npm run start
 ## Frontend Setup
 
 ```bash
-cd client
+cd frontend
 npm install
 npm run dev
 
