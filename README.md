@@ -10,7 +10,6 @@ A full-stack URL shortener and analytics platform, similar to Bitly, that allows
 
 ## 🔐 Authentication
 - Secure login with email and password using JWT.
-(Hardcoded credentials for testing: intern@dacoid.com / Test123)
 
 ## 🔗 Link Shortening
 - Users can create short links with optional custom aliases and expiration dates.
