@@ -39,7 +39,7 @@ Charts: Recharts
 Clone the repo:
 
 ```bash
-git clone https://github.com/your-username/link-analytics-dashboard.git
+git clone https://github.com/RahulSidar08/Mini-Bitly.git
 cd link-analytics-dashboard
   
 ```
