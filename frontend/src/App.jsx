@@ -3,16 +3,16 @@ import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./components/Login";
 import { Signup } from "./components/Signup";
-import Dashboard from "./components/Dashboard";
-import AnalyticsDashboard from "./components/AnalyticsDashboard";
-import Dashboard2 from "./components/DAshboard/DashBoard";
+import {ShortenUrl} from "./components/ShortenUrl";
+import {Dashboard} from "./components/DAshboard/DashBoard";
 import { PageNotFound } from "./components/PageNotFound";
+import HomePage from "./components/HomePage";
 const appRouter = createBrowserRouter([
   {
     path: "/",
     element: (
       <div>
-        <Dashboard/>
+        <HomePage/>
       </div>
     ),
   },
@@ -33,21 +33,22 @@ const appRouter = createBrowserRouter([
     ),
   },
   {
-    path: "/analytic",
+    path: "/shortUrl",
     element: (
       <div>
-        <AnalyticsDashboard/>
+        <ShortenUrl/>
       </div>
     ),
   },
   {
-    path: "/hero",
+    path: "/dashboard",
     element: (
       <div>
-        <Dashboard2/>
+        <Dashboard/>
       </div>
     ),
-  },{
+  },
+  {
     path : "*",
     element : <div>
       <PageNotFound/>

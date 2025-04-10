@@ -5,7 +5,7 @@ import ClicksChart from './ClicksChart';
 import DeviceChart from './DeviceChart';
 import { BrowserPieChart } from './BrowserPieChart';
 import { ClicksLineChart } from './Linechart';
-const Dashboard2 = () => {
+export const Dashboard = () => {
   const [links, setLinks] = useState([]);
   const [clicksData, setClicksData] = useState([]);
   const [deviceData, setDeviceData] = useState([]);
@@ -42,4 +42,3 @@ const Dashboard2 = () => {
   );
 };
 
-export default Dashboard2;

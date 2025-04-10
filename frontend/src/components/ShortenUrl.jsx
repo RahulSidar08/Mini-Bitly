@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
-const Dashboard = () => {
+export const ShortenUrl = () => {
   const {
     register,
     handleSubmit,
@@ -95,7 +95,7 @@ const Dashboard = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition"
+            className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-900 transition"
           >
             Create Short URL
           </button>
@@ -106,4 +106,3 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
