@@ -1,25 +1,17 @@
 import { Link } from 'react-router-dom';
+import { Navbar } from './Navbar';
 
 const HomePage = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
-      {/* Header */}
-      <header className="bg-white text-black shadow-lg p-2 w-full border-b-5 fixed top-0 max-sm:w-full max-sm:flex">
-        <div className='flex w-full justify-between'>
-        <h1 className="text-2xl font-bold text-blue-600">LinkSnap</h1>
-        <nav className="space-x-4">
-          <Link to="/login" className="text-blue-600 hover:underline">Login</Link>
-          <Link to="/register" className="text-white bg-blue-600 px-4 py-2 rounded-md hover:bg-blue-700">Sign Up</Link>
-        </nav>
-        </div>
-      </header>
-
+    <div className="min-h-screen flex flex-col bg-gray-50 mt-16">
+        <Navbar/>
       {/* Hero */}
       <section className="flex flex-col items-center justify-center text-center px-4 py-20">
         <h2 className="text-4xl font-bold text-gray-800 mb-4">Shorten Links. Track Clicks. Gain Insights.</h2>
         <p className="text-gray-600 max-w-2xl mb-6">
           Create branded short URLs and get real-time analytics on clicks, devices, browsers, and more.
         </p>
+        <div className='flex mx-auto space-x-4'>
         <Link
           to="/dashboard"
           className="text-white bg-blue-600 px-6 py-3 rounded-full text-lg hover:bg-blue-700 transition"
@@ -33,6 +25,8 @@ const HomePage = () => {
         >
             Short Link
         </Link>
+
+        </div>
       </section>
 
       {/* Features */}

@@ -37,7 +37,7 @@ export const ShortenUrl = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4">
+    <div className="min-h-screen bg-gray-100 p-4 mx-auto mt-10">
       <div className="max-w-xl mx-auto bg-white p-6 rounded shadow">
         <h2 className="text-2xl font-bold mb-4">Create Short Link</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
