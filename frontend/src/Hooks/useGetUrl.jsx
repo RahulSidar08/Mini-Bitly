@@ -3,7 +3,7 @@ import axios from "axios";
 export const useGetUrl = () => {
   useEffect(() => {
     const fetchData = async () => {
-      const res = await axios.get("http://localhost:3000/api/urls/getUrl", {
+      const res = await axios.get("https://mini-bitly-tjgu.onrender.com/api/urls/getUrl", {
         withCredentials: true,
       });
       setLinks(res.data.longUrl);

@@ -14,7 +14,7 @@ export const Dashboard = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await axios.get('http://localhost:3000/api/urls/getUrl',{withCredentials:true});
+      const res = await axios.get('https://mini-bitly-tjgu.onrender.com/api/urls/getUrl',{withCredentials:true});
       setLinks(res.data.longUrl);
       setData(res.data.urls)
       setClicksData(res.data.urls); // [{ date: '2025-04-01', clicks: 10 }, ...]
@@ -25,7 +25,7 @@ export const Dashboard = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await axios.get('http://localhost:3000/api/urls/get/yt',{withCredentials:true});
+      const res = await axios.get('https://mini-bitly-tjgu.onrender.com/api/urls/get/yt',{withCredentials:true});
       console.log(res)
       setSingle(res.data.link)
     };

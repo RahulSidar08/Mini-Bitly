@@ -18,7 +18,7 @@ export const ShortenUrl = () => {
     };
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/urls/shorten",
+        "https://mini-bitly-tjgu.onrender.com/api/urls/shorten",
         inputData,
         {
           headers: {

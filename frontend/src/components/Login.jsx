@@ -22,7 +22,7 @@ const Login = () => {
         password: data.password,
       };
       const res = await axios.post(
-        `http://localhost:3000/user/login`,
+        `https://mini-bitly-tjgu.onrender.com/user/login`,
         userData,
         {
           headers: {

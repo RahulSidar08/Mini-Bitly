@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const AnalyticsTable = ({ links }) => {
   const loadUrlLogs = async (shortCode) => {
     try {
-      let res = await axios.get(`http://localhost:3000/api/urls/get/${shortCode}`, {
+      let res = await axios.get(`https://mini-bitly-tjgu.onrender.com/api/urls/get/${shortCode}`, {
         withCredentials: true,
       });
       console.log(res);
