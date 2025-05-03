@@ -28,10 +28,10 @@ export const ShortenUrl = () => {
         }
       );
       if (response.data.success) {
-        toast.success(res.data.message);
+        toast.success(response.data.message);
       }
     } catch (err) {
-      toast.error(err);
+      toast.error(err.response?.data?.message || "Something went wrong!");
       console.log(err);
     }
   };
