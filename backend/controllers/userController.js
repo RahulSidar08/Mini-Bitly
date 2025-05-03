@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
-import dotenv from "dotenv"
-import bcrypt from "bcrypt"
-dotenv.config()
+import dotenv from "dotenv";
+import bcrypt from "bcrypt";
+dotenv.config();
 import { User } from "../models/userModel.js";
 
 export const register = async (req, res) => {
@@ -34,7 +34,7 @@ export const register = async (req, res) => {
       newUser,
     });
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return res.status(400).json({
       success: true,
       message: "Something went wrong",
@@ -53,36 +53,44 @@ export const login = async (req, res) => {
       });
     }
 
-    let user = await User.findOne({email})
-    if(!user)
-    {
-        return res.status(400).json({
-            success: false,
-            message: "User Does not exist",
-        })
+    let user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).json({
+        success: false,
+        message: "User Does not exist",
+      });
     }
 
     const isPasswordMatch = await bcrypt.compare(password, user.password);
     if (!isPasswordMatch) {
-        return res.status(400).json({
-            message: "Incorrect email or password.",
-            success: false,
-        })
-    };
+      return res.status(400).json({
+        message: "Incorrect email or password.",
+        success: false,
+      });
+    }
 
     const tokenData = {
-        userId: user._id
-    }
-    const token = await jwt.sign(tokenData, process.env.secrete_key, { expiresIn: '1d' });
+      userId: user._id,
+    };
+    const token = await jwt.sign(tokenData, process.env.secrete_key, {
+      expiresIn: "1d",
+    });
 
-    return res.status(200).cookie("token", token, { maxAge: 1 * 24 * 60 * 60 * 1000, httpsOnly: true, sameSite: 'strict' }).json({
+    return res
+      .status(200)
+      .cookie("token", token, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "None", // required for cross-site cookie
+        maxAge: 7 * 24 * 60 * 60 * 1000,
+      })
+      .json({
         success: true,
         message: `User loggedIn Successfully`,
-        user
-    })
-
+        user,
+      });
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return res.status(400).json({
       success: true,
       message: "Something went wrong",
