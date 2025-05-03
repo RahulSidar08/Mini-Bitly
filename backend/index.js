@@ -25,7 +25,6 @@ app.get("/", (req,res) => {
 })
 app.use("/user",userRoute)
 app.use("/api/urls",urlRoute)
-const PORT = process.env.PORT || 8000;
 app.listen(port , () => {
 console.log(`Server is running on port port`)
 })
