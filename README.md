@@ -64,10 +64,6 @@ npm run dev
 
 ## Live
 ```bash
-
+https://mini-bitly.vercel.app
 ```
 
-## 💡 Inspired by
-Bitly
-
-TinyURL
