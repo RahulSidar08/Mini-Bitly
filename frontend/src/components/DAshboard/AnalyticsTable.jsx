@@ -7,7 +7,6 @@ const AnalyticsTable = ({ links }) => {
       let res = await axios.get(`https://mini-bitly-tjgu.onrender.com/api/urls/get/${shortCode}`, {
         withCredentials: true,
       });
-      console.log(res);
     } catch (error) {
       console.log(error);
     }

@@ -10,7 +10,6 @@ export const ShortenUrl = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = async (data) => {
-    console.log(data);
     let inputData = {
       longUrl: data.url,
       customAlias: data.alias,

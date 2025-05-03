@@ -26,7 +26,6 @@ export const Dashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       const res = await axios.get('https://mini-bitly-tjgu.onrender.com/api/urls/get/yt',{withCredentials:true});
-      console.log(res)
       setSingle(res.data.link)
     };
     fetchData();

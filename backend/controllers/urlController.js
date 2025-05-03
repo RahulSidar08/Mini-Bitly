@@ -7,7 +7,6 @@ import axios from "axios";
 
 export const shortenUrl = async (req, res) => {
   try {
-    console.log(req.body);
     const { longUrl, customAlias, expirationDate } = req.body;
     const userId = req.id; // Comes from auth middleware
     console.log(userId);

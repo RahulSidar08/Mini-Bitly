@@ -9,7 +9,6 @@ export const Navbar = () => {
   const dispatch = useDispatch();
   function handleDelte(e){
     e.preventDefault()
-    console.log("deleted")
     localStorage.removeItem("user")
     dispatch(logout());
   }
