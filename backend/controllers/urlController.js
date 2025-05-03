@@ -1,6 +1,8 @@
 import { nanoid } from "nanoid";
 import { Url } from "../models/urlModel.js";
 import { Click } from "../models/clickLogModel.js";
+import { UAParser } from "ua-parser-js";
+const parser = new UAParser();
 import axios from "axios";
 
 export const shortenUrl = async (req, res) => {
@@ -13,10 +15,8 @@ export const shortenUrl = async (req, res) => {
       return res.status(400).json({ error: "Please provide the long URL." });
     }
 
-    // Generate or set the short code
     const shortCode =
-      customAlias && customAlias.trim() !== "" ? customAlias.trim() : nanoid(6); 
-
+      customAlias && customAlias.trim() !== "" ? customAlias.trim() : nanoid(6);
 
     const existingUrl = await Url.findOne({ shortCode });
     if (existingUrl) {
@@ -25,7 +25,6 @@ export const shortenUrl = async (req, res) => {
         .json({ error: "The custom alias is already taken." });
     }
 
-    // Create a new URL document
     const newUrl = new Url({
       userId,
       longUrl,
@@ -36,7 +35,6 @@ export const shortenUrl = async (req, res) => {
 
     await newUrl.save();
 
-    // Send back the generated short URL
     res.status(201).json({
       message: "Short URL created successfully",
       longUrl,
@@ -66,17 +64,17 @@ export const getAllUrl = async (req, res) => {
     console.log(error);
   }
 };
-import { UAParser } from "ua-parser-js";
-const parser = new UAParser();
+
 export const urlDetails = async (req, res) => {
   try {
     const { shortCode } = req.params;
     const userId = req.id;
 
-    if (!shortCode)
+    if (!shortCode) {
       return res
         .status(400)
         .json({ success: false, message: "Missing short code" });
+    }
 
     const link = await Url.findOne({ shortCode });
 
@@ -110,8 +108,8 @@ export const urlDetails = async (req, res) => {
       browser,
       location: { country: geo.country_name, city: geo.city },
     });
-
-    return res.redirect(link.longUrl); 
+    return res.redirect(link.longUrl);
+  } catch (error) {
     console.log("Error in urlDetails:", error);
     res.status(500).json({ success: false, message: "Internal server error" });
   }
@@ -130,9 +128,7 @@ export const getSingleUrlDetail = async (req, res) => {
     const link = await Click.findOne({ shortCode });
 
     if (!link) {
-      return res
-        .status(404)
-        .json({ success: false, message: "URL not found" });
+      return res.status(404).json({ success: false, message: "URL not found" });
     }
 
     return res.status(200).json({
